@@ -5,7 +5,6 @@ export const generateTokenAndSetCookie = (userId) => {
     expiresIn: "15d",
   });
 
-  console.log(token);
   return token;
   
 };
