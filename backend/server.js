@@ -21,7 +21,8 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
+// limit should not be to high to prevent DOS attack
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
