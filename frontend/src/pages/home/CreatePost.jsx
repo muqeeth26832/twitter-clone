@@ -19,7 +19,7 @@ const CreatePost = () => {
     mutate: createPost,
     isPending,
     isError,
-    error
+    error,
   } = useMutation({
     mutationFn: async ({ text, img }) => {
       try {
@@ -112,8 +112,7 @@ const CreatePost = () => {
             {isPending ? "Posting..." : "Post"}
           </button>
         </div>
-        {isError && <div className="text-red-500">Something went wrong</div>}
-        {error.message}
+        {isError && <div className="text-red-500">{error.message}</div>}
       </form>
     </div>
   );
