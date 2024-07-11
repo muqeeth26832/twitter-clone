@@ -1,23 +1,16 @@
-import daisyui from "daisyui";
-import daisyUIThemes from "daisyui/src/theming/themes";
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [daisyui],
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-  daisyui: {
-    themes: [
-      "light",
-      {
-        black: {
-          ...daisyUIThemes["black"],
-          primary: "rgb(29, 155, 240)",
-          secondary: "rgb(24, 24, 24)",
-        },
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
       },
-    ],
+    },
   },
-};
+});
